@@ -1,0 +1,35 @@
+<%- include("partials/header") %>
+
+<br>
+<br>
+<br>
+
+<a href="/blogs/new" id="new-blog" class="ui red basic button">New Blog</a>
+
+<% blogs.forEach(function(blog){ %>
+    <div class="blogs"> 
+<div id="blog-item">
+    <h2><%=blog.title%></h2>
+    <img src=" <%=blog.image%> ">
+    <span><%= blog.created.toDateString() %></span>
+    <br>
+    <p><%= blog.body.substring(0, 100)%>...</p>
+    <a href="/blogs/<%= blog._id %>">Read More</a>
+    </div>
+    <a href="/blogs/<%=blog._id%>/edit" class="ui orange basic button">Update Blog</a>
+            <form style="display: inline" method="POST" action="/blogs/<%=blog._id%>?_method=DELETE">
+                <button class="ui red basic button" type="submit">Delete Blog</button>
+            </form>
+</div>   
+<% }) %>
+
+
+
+<%- include("partials/footer") %>
+
+
+
+
+
+
+
